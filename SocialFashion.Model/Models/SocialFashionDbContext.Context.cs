@@ -9,12 +9,11 @@
 
 namespace SocialFashion.Model.Models
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class SocialFashionDbContext : IdentityDbContext<ApplicationUser>
+    
+    public partial class SocialFashionDbContext : DbContext
     {
         public SocialFashionDbContext()
             : base("name=SocialFashionDbContext")
@@ -23,15 +22,17 @@ namespace SocialFashion.Model.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<IdentityUserRole>().HasKey(i => i.UserId);
-            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+            modelBuilder.Entity<AspNetUser>().ToTable("AspNetUsers");
+            modelBuilder.Entity<AspNetRole>().ToTable("AspNetRoles");
+            modelBuilder.Entity<AspNetUserClaim>().ToTable("AspNetUserClaims");
+            modelBuilder.Entity<AspNetUserLogin>().ToTable("AspNetUserLogins");
         }
-
-        public static SocialFashionDbContext Create()
-        {
-            return new SocialFashionDbContext();
-        }
-
+    
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Branch> Branchs { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Fan> Fans { get; set; }

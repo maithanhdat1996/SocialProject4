@@ -26,10 +26,10 @@ namespace SocialFashion.Service
 
     class FanService : IFanService
     {
-        IFanService _fanRepository;
+        IFanRepository _fanRepository;
         IUnitOfWork _unitOfWork;
 
-        public FanService(IFanService fanRepository, IUnitOfWork unitOfWork)
+        public FanService(IFanRepository fanRepository, IUnitOfWork unitOfWork)
         {
             this._fanRepository = fanRepository;
             this._unitOfWork = unitOfWork;
@@ -62,7 +62,7 @@ namespace SocialFashion.Service
 
         public void Update(Fan fan)
         {
-            _fanRepository.Update(e);
+            _fanRepository.Update(fan);
         }
     }
 }

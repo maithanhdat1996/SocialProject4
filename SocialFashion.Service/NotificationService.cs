@@ -11,7 +11,7 @@ namespace SocialFashion.Service
 {
     public interface INotificationService
     {
-        void Add(Notification notification);
+        Notification Add(Notification notification);
 
         void Update(Notification notification);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Notification notification)
+        public Notification Add(Notification notification)
         {
-            _notificationRepository.Add(notification);
+            return _notificationRepository.Add(notification);
         }
 
         public void Delete(int id)

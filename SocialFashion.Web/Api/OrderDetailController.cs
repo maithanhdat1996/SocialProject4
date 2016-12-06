@@ -7,18 +7,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
+using System.Web.Mvc;
 
 namespace SocialFashion.Web.Api
 {
-    [RoutePrefix("api/event")]
-    public class EventController : ApiControllerBase
+    [RoutePrefix("api/orderdetail")]
+    public class OrderDetailController : ApiControllerBase
     {
-        IEventService _eventService;
-        public EventController(ILogService logService, IEventService eventService) :
+        IOrderDetailService _orderDetailService;
+
+        public OrderDetailController(ILogService logService, IOrderDetailService orderDetailService) :
             base(logService)
         {
-            this._eventService = eventService;
+            this._orderDetailService = orderDetailService;
         }
 
         [Route("getall")]
@@ -27,16 +28,16 @@ namespace SocialFashion.Web.Api
             return CreateHttpResponse(request, () =>
             {
 
-                var listEvent = _eventService.GetAll();
+                var listProduct = _orderDetailService.GetAll();
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listEvent);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProduct);
 
 
                 return response;
             });
         }
         [Route("create")]
-        public HttpResponseMessage Post(HttpRequestMessage request, Event e)
+        public HttpResponseMessage Post(HttpRequestMessage request, OrderDetail od)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -47,17 +48,17 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    var _event = _eventService.Add(e);
-                    _eventService.SaveChanges();
+                    var orderDetail = _orderDetailService.Add(od);
+                    _orderDetailService.SaveChanges();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, _event);
+                    response = request.CreateResponse(HttpStatusCode.Created, orderDetail);
 
                 }
                 return response;
             });
         }
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage request, Event e)
+        public HttpResponseMessage Put(HttpRequestMessage request, OrderDetail od)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -68,8 +69,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _eventService.Update(e);
-                    _eventService.SaveChanges();
+                    _orderDetailService.Update(od);
+                    _orderDetailService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 
@@ -89,8 +90,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _eventService.Delete(id);
-                    _eventService.SaveChanges();
+                    _orderDetailService.Delete(id);
+                    _orderDetailService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 
@@ -99,5 +100,4 @@ namespace SocialFashion.Web.Api
             });
         }
     }
-   
 }

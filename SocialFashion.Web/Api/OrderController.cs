@@ -7,18 +7,18 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
+using System.Web.Mvc;
 
 namespace SocialFashion.Web.Api
 {
-    [RoutePrefix("api/event")]
-    public class EventController : ApiControllerBase
+    [RoutePrefix("api/order")]
+    public class OrderController : ApiControllerBase
     {
-        IEventService _eventService;
-        public EventController(ILogService logService, IEventService eventService) :
+        IOrderService _orderService;
+        public OrderController(ILogService logService, IOrderService orderService) :
             base(logService)
         {
-            this._eventService = eventService;
+            this._orderService = orderService;
         }
 
         [Route("getall")]
@@ -27,16 +27,16 @@ namespace SocialFashion.Web.Api
             return CreateHttpResponse(request, () =>
             {
 
-                var listEvent = _eventService.GetAll();
+                var listOrder = _orderService.GetAll();
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listEvent);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listOrder);
 
 
                 return response;
             });
         }
         [Route("create")]
-        public HttpResponseMessage Post(HttpRequestMessage request, Event e)
+        public HttpResponseMessage Post(HttpRequestMessage request, Order o)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -47,17 +47,17 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    var _event = _eventService.Add(e);
-                    _eventService.SaveChanges();
+                    var order = _orderService.Add(o);
+                    _orderService.SaveChanges();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, _event);
+                    response = request.CreateResponse(HttpStatusCode.Created, order);
 
                 }
                 return response;
             });
         }
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage request, Event e)
+        public HttpResponseMessage Put(HttpRequestMessage request, Order o)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -68,8 +68,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _eventService.Update(e);
-                    _eventService.SaveChanges();
+                    _orderService.Update(o);
+                    _orderService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 
@@ -89,8 +89,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _eventService.Delete(id);
-                    _eventService.SaveChanges();
+                    _orderService.Delete(id);
+                    _orderService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 
@@ -99,5 +99,5 @@ namespace SocialFashion.Web.Api
             });
         }
     }
-   
+    
 }

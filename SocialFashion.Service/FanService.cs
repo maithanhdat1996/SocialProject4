@@ -11,7 +11,7 @@ namespace SocialFashion.Service
 {
     public interface IFanService
     {
-        void Add(Fan fan);
+        Fan Add(Fan fan);
 
         void Update(Fan fan);
 
@@ -35,34 +35,34 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Fan fan)
+        public Fan Add(Fan fan)
         {
-            throw new NotImplementedException();
+            return _fanRepository.Add(fan);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _fanRepository.Delete(id);
         }
 
         public IEnumerable<Fan> GetAll()
         {
-            throw new NotImplementedException();
+            return _fanRepository.GetAll();
         }
 
         public Fan GetById(int id)
         {
-            throw new NotImplementedException();
+            return _fanRepository.GetSingleById(id);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
 
         public void Update(Fan fan)
         {
-            throw new NotImplementedException();
+            _fanRepository.Update(e);
         }
     }
 }

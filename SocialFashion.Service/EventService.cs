@@ -11,7 +11,7 @@ namespace SocialFashion.Service
 {
     public interface IEventService
     {
-        void Add(Event e);
+        Event Add(Event e);
 
         void Update(Event e);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Event e)
+        public Event Add(Event e)
         {
-            _eventRepository.Add(e);
+            return _eventRepository.Add(e);
         }
 
         public void Delete(int id)

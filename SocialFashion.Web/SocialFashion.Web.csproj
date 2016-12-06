@@ -220,7 +220,17 @@
   <ItemGroup>
     <Compile Include="Api\BranchController.cs" />
     <Compile Include="Api\EventController.cs" />
+    <Compile Include="Api\FanController.cs" />
+    <Compile Include="Api\MessageController.cs" />
+    <Compile Include="Api\NotificationController.cs" />
+    <Compile Include="Api\OrderController.cs" />
+    <Compile Include="Api\OrderDetailController.cs" />
     <Compile Include="Api\ProductController.cs" />
+    <Compile Include="Api\ProductDetailController.cs" />
+    <Compile Include="Api\ProductTypeController.cs" />
+    <Compile Include="Api\SatusCommentController.cs" />
+    <Compile Include="Api\StatusController.cs" />
+    <Compile Include="Api\StatusLikeController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -270,6 +280,14 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Fan\" />
+    <Folder Include="Views\OrderDetail\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\ProductDetail\" />
+    <Folder Include="Views\ProductType\" />
+    <Folder Include="Views\SatusComment\" />
+    <Folder Include="Views\StatusLike\" />
+    <Folder Include="Views\Status\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -11,7 +11,7 @@ namespace SocialFashion.Service
 {
     public interface IOrderDetailService
     {
-        void Add(OrderDetail orderDetail);
+        OrderDetail Add(OrderDetail orderDetail);
 
         void Update(OrderDetail orderDetail);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(OrderDetail orderDetail)
+        public OrderDetail Add(OrderDetail orderDetail)
         {
-            _orderDetailRepository.Add(orderDetail);
+            return _orderDetailRepository.Add(orderDetail);
         }
 
         public void Delete(int id)

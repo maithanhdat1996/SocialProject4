@@ -12,7 +12,7 @@ namespace SocialFashion.Service
 
     public interface IProductTypeService
     {
-        void Add(ProductType productType);
+        ProductType Add(ProductType productType);
 
         void Update(ProductType productType);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(ProductType productType)
+        public ProductType Add(ProductType productType)
         {
-            _productTypeRepository.Add(productType);
+            return _productTypeRepository.Add(productType);
         }
 
         public void Delete(int id)

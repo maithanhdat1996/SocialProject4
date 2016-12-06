@@ -7,18 +7,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
+using System.Web.Mvc;
 
 namespace SocialFashion.Web.Api
 {
-    [RoutePrefix("api/event")]
-    public class EventController : ApiControllerBase
+    [RoutePrefix("api/statuslike")]
+    public class StatusLikeController : ApiControllerBase
     {
-        IEventService _eventService;
-        public EventController(ILogService logService, IEventService eventService) :
+        IStatusLikeService _statusLikeService;
+
+        public StatusLikeController(ILogService logService, IStatusLikeService statusLikeService) :
             base(logService)
         {
-            this._eventService = eventService;
+            this._statusLikeService = statusLikeService;
         }
 
         [Route("getall")]
@@ -27,16 +28,16 @@ namespace SocialFashion.Web.Api
             return CreateHttpResponse(request, () =>
             {
 
-                var listEvent = _eventService.GetAll();
+                var listStatusLike = _statusLikeService.GetAll();
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listEvent);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listStatusLike);
 
 
                 return response;
             });
         }
         [Route("create")]
-        public HttpResponseMessage Post(HttpRequestMessage request, Event e)
+        public HttpResponseMessage Post(HttpRequestMessage request, StatusLike sl)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -47,17 +48,17 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    var _event = _eventService.Add(e);
-                    _eventService.SaveChanges();
+                    var statusLike = _statusLikeService.Add(sl);
+                    _statusLikeService.SaveChanges();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, _event);
+                    response = request.CreateResponse(HttpStatusCode.Created, statusLike);
 
                 }
                 return response;
             });
         }
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage request, Event e)
+        public HttpResponseMessage Put(HttpRequestMessage request, StatusLike sl)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -68,8 +69,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _eventService.Update(e);
-                    _eventService.SaveChanges();
+                    _statusLikeService.Update(sl);
+                    _statusLikeService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 
@@ -89,8 +90,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _eventService.Delete(id);
-                    _eventService.SaveChanges();
+                    _statusLikeService.Delete(id);
+                    _statusLikeService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 
@@ -99,5 +100,4 @@ namespace SocialFashion.Web.Api
             });
         }
     }
-   
 }

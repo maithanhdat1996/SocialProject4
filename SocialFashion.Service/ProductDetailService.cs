@@ -12,7 +12,7 @@ namespace SocialFashion.Service
     
     public interface IProductDetailService
     {
-        void Add(ProductDetail productDetail);
+        ProductDetail Add(ProductDetail productDetail);
 
         void Update(ProductDetail productDetail);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(ProductDetail productDetail)
+        public ProductDetail Add(ProductDetail productDetail)
         {
-            _productRepository.Add(productDetail);
+            return _productRepository.Add(productDetail);
         }
 
         public void Delete(int id)

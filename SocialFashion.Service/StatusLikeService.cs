@@ -12,7 +12,7 @@ namespace SocialFashion.Service
 
     public interface IStatusLikeService
     {
-        void Add(StatusLike statusLike);
+        StatusLike Add(StatusLike statusLike);
 
         void Update(StatusLike statusLike);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(StatusLike statusLike)
+        public StatusLike Add(StatusLike statusLike)
         {
-            _statusLikeRepository.Add(statusLike);
+           return  _statusLikeRepository.Add(statusLike);
         }
 
         public void Delete(int id)

@@ -11,7 +11,7 @@ namespace SocialFashion.Service
 {
     public interface IMessageService
     {
-        void Add(Message message);
+        Message Add(Message message);
 
         void Update(Message message);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Message message)
+        public Message Add(Message message)
         {
-            _messageRepository.Add(message);
+            return _messageRepository.Add(message);
         }
 
         public void Delete(int id)

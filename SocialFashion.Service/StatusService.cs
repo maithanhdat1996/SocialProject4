@@ -12,7 +12,7 @@ namespace SocialFashion.Service
 
     public interface IStatusService
     {
-        void Add(Status status);
+        Status Add(Status status);
 
         void Update(Status status);
 
@@ -35,9 +35,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Status status)
+        public Status Add(Status status)
         {
-            _statusRepository.Add(status);
+            return _statusRepository.Add(status);
         }
 
         public void Delete(int id)

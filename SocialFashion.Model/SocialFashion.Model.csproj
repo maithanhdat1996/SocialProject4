@@ -31,14 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -49,92 +60,91 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Branch.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Event.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Fan.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Log.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Message.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Notification.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductDetail.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductType.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SocialDbContext.Context.cs">
+    <Compile Include="Models\SocialFashionDbContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SocialDbContext.Context.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SocialDbContext.cs">
+    <Compile Include="Models\SocialFashionDbContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SocialDbContext.Designer.cs">
+    <Compile Include="Models\SocialFashionDbContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SocialDbContext.edmx</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Status.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusComment.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusLike.cs">
-      <DependentUpon>SocialDbContext.tt</DependentUpon>
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\SocialDbContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SocialDbContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Models\SocialDbContext.edmx.diagram">
-      <DependentUpon>SocialDbContext.edmx</DependentUpon>
+    <EntityDeploy Include="Models\SocialFashionDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SocialFashionDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\SocialFashionDbContext.edmx.diagram">
+      <DependentUpon>SocialFashionDbContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\SocialDbContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SocialDbContext.edmx</DependentUpon>
-      <LastGenOutput>SocialDbContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SocialDbContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SocialDbContext.edmx</DependentUpon>
-      <LastGenOutput>SocialDbContext.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Models\SocialFashionDbContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SocialFashionDbContext.edmx</DependentUpon>
+      <LastGenOutput>SocialFashionDbContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SocialFashionDbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SocialFashionDbContext.edmx</DependentUpon>
+      <LastGenOutput>SocialFashionDbContext.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

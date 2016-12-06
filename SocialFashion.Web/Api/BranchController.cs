@@ -7,19 +7,18 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
+using System.Web.Mvc;
 
 namespace SocialFashion.Web.Api
 {
-    [RoutePrefix("api/product")]
-    public class ProductController : ApiControllerBase
+    [RoutePrefix("api/branch")]
+    public class BranchController : ApiControllerBase
     {
-        IProductService _productService;
-
-        public ProductController(ILogService logService, IProductService productService) :
+        IBranchService _branchService;
+        public BranchController(ILogService logService, IBranchService branchService) :
             base(logService)
         {
-            this._productService = productService;
+            this._branchService = branchService;
         }
 
         [Route("getall")]
@@ -27,17 +26,17 @@ namespace SocialFashion.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                
-                var listProduct = _productService.GetAll();
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProduct);
+                var listBranch = _branchService.GetAll();
 
-                
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listBranch);
+
+
                 return response;
             });
         }
         [Route("create")]
-        public HttpResponseMessage Post(HttpRequestMessage request, Product p)
+        public HttpResponseMessage Post(HttpRequestMessage request, Branch b)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -48,17 +47,17 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    var product = _productService.Add(p);
-                    _productService.SaveChanges();
+                    var branch = _branchService.Add(b);
+                    _branchService.SaveChanges();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, product);
+                    response = request.CreateResponse(HttpStatusCode.Created, branch);
 
                 }
                 return response;
             });
         }
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage request, Product p)
+        public HttpResponseMessage Put(HttpRequestMessage request, Branch b)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -69,8 +68,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _productService.Update(p);
-                    _productService.SaveChanges();
+                    _branchService.Update(b);
+                    _branchService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 
@@ -90,8 +89,8 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    _productService.Delete(id);
-                    _productService.SaveChanges();
+                    _branchService.Delete(id);
+                    _branchService.SaveChanges();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
 

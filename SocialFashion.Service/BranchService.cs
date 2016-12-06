@@ -11,7 +11,7 @@ namespace SocialFashion.Service
 {
     public interface IBranchService
     {
-        void Add(Branch branch);
+        Branch Add(Branch branch);
 
         void Update(Branch branch);
 
@@ -34,9 +34,9 @@ namespace SocialFashion.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Branch branch)
+        public Branch Add(Branch branch)
         {
-            _branchRepository.Add(branch);
+            return _branchRepository.Add(branch);
         }
 
         public void Delete(int id)

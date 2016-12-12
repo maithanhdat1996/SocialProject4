@@ -68,29 +68,29 @@ namespace SocialFashion.Web.Models
     public class RegisterViewModel
     {
 
-        [Required]
-        [Display(Name = "Name")]
+        [Required(ErrorMessage = "Vui lòng hãy nhập họ tên.")]
+        [Display(Name = "Họ tên")]
         public string UserName { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng hãy nhập Email.")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Vui lòng hãy nhập mật khẩu.")]
+        [StringLength(100, ErrorMessage = "{0} phải {2} ký tự trở lên.", MinimumLength = 8)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Nhập lại mật khẩu")]
+        [Compare("Password", ErrorMessage = "Mật khẩu không khớp.")]
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Gender")]
-        [Required]
+        [Required(ErrorMessage = "Vui lòng hãy nhập giới tính.")]
         public bool Gender { get; set; }
 
         [Display(Name = "Birthdate")]

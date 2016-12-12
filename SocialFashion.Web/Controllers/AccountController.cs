@@ -77,8 +77,7 @@ namespace SocialFashion.Web.Controllers
             }
             SocialFashionDbContext db = new SocialFashionDbContext();
             AspNetUser user = db.AspNetUsers.SingleOrDefault(m => m.Email == model.Email);
-            //ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
-
+            
             if (user == null)
             {
                 ModelState.AddModelError("CustomError", "Email không tồn tại");
@@ -108,7 +107,7 @@ namespace SocialFashion.Web.Controllers
                 //{
                 //    return RedirectToLocal(returnUrl);
                 //}
-                //return RedirectToLocal(returnUrl);
+                return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -173,6 +172,7 @@ namespace SocialFashion.Web.Controllers
         }
 
         [AllowAnonymous]
+    
         public ActionResult RegisterInfo()
         {
             return View();
@@ -181,9 +181,16 @@ namespace SocialFashion.Web.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
+
         [ValidateAntiForgeryToken]
         public ActionResult RegisterInfo(RegisterViewModel model)
         {
+            SocialFashionDbContext db = new SocialFashionDbContext();
+  
+            if(db.AspNetUsers.SingleOrDefault(m => m.Email == model.Email) != null)
+            {
+                ModelState.AddModelError("DupMail", "Mail đã được đăng ký");
+            }
             if (ModelState.IsValid)
             {
                 RegisterViewModel register = new RegisterViewModel
@@ -200,6 +207,7 @@ namespace SocialFashion.Web.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -224,9 +232,10 @@ namespace SocialFashion.Web.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.UserName, Birthdate = model.Birthdate, Aboutme = model.Aboutme, Website = model.Website, Gender = model.Gender };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

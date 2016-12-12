@@ -79,7 +79,7 @@ namespace SocialFashion.Web
             {
                 RequiredLength = 8,
                // RequireNonLetterOrDigit = true,
-                RequireDigit = true,
+                //RequireDigit = true,
                 //RequireLowercase = true,
                 //RequireUppercase = true,
             };

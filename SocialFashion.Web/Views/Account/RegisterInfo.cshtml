@@ -23,6 +23,8 @@
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary("", new { @class = "text-danger" })
+                       //@Html.ValidationMessage("DupMail", new { @class = "text-danger" })
+
                         <div class="joms-form__group">
                             <span> @Html.LabelFor(m => m.UserName) <span class="joms-required">*</span> </span>
                             <div class="col-md-10">

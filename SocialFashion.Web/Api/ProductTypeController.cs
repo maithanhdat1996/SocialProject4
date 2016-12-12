@@ -11,11 +11,10 @@ using System.Web.Mvc;
 
 namespace SocialFashion.Web.Api
 {
-    [RoutePrefix("api/productype")]
+    [RoutePrefix("api/producttype")]
     public class ProductTypeController : ApiControllerBase
     {
         IProductTypeService _productTypeService;
-
         public ProductTypeController(ILogService logService, IProductTypeService productTypeService) :
             base(logService)
         {
@@ -28,9 +27,9 @@ namespace SocialFashion.Web.Api
             return CreateHttpResponse(request, () =>
             {
 
-                var listProduct = _productTypeService.GetAll();
+                var listProductType = _productTypeService.GetAll();
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProduct);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProductType);
 
 
                 return response;
@@ -48,10 +47,10 @@ namespace SocialFashion.Web.Api
                 }
                 else
                 {
-                    var productType = _productTypeService.Add(pt);
+                    var order = _productTypeService.Add(pt);
                     _productTypeService.SaveChanges();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, productType);
+                    response = request.CreateResponse(HttpStatusCode.Created, order);
 
                 }
                 return response;
@@ -100,4 +99,5 @@ namespace SocialFashion.Web.Api
             });
         }
     }
+
 }

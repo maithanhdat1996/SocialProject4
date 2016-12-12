@@ -37,6 +37,7 @@ namespace SocialFashion.Web.Api
             });
         }
 
+        [HttpGet]
         [Route("testgetallproduct")]
         public HttpResponseMessage TestGetAll(HttpRequestMessage request)
         {
@@ -52,7 +53,7 @@ namespace SocialFashion.Web.Api
             });
         }
 
-
+        [HttpPost]
         [Route("create")]
         public HttpResponseMessage Post(HttpRequestMessage request, Product p)
         {
@@ -74,6 +75,7 @@ namespace SocialFashion.Web.Api
                 return response;
             });
         }
+        [HttpPut]
         [Route("update")]
         public HttpResponseMessage Put(HttpRequestMessage request, Product p)
         {
@@ -95,6 +97,7 @@ namespace SocialFashion.Web.Api
                 return response;
             });
         }
+        [HttpDelete]
         [Route("delete")]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {

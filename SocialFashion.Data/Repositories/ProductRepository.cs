@@ -23,9 +23,12 @@ namespace SocialFashion.Data.Repositories
         public IEnumerable<Product> TestGetAllProduct()
         {
             IEnumerable<GetAllProduct_Result> lstProductSp =  db.GetAllProduct().ToList();
-            Mapper.CreateMap<Product, GetAllProduct_Result>().ReverseMap();
-            IEnumerable<Product> listProduct = Mapper.Map<IEnumerable<Product>>(lstProductSp);
-            return listProduct;
+
+            Mapper.CreateMap<IEnumerable<GetAllProduct_Result>, IEnumerable<Product>>();
+
+            IEnumerable<Product> lstProduct =  Mapper.Map<IEnumerable<GetAllProduct_Result>, IEnumerable<Product>>(lstProductSp);
+
+            return lstProduct;
          }
     }
 }

@@ -34,9 +34,9 @@ namespace SocialFashion.Web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -335,8 +335,8 @@ namespace SocialFashion.Web.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
-        // Used for XSRF protection when adding external logins
+        #region Helpers
+        //Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
@@ -386,6 +386,6 @@ namespace SocialFashion.Web.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

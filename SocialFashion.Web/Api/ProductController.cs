@@ -36,6 +36,23 @@ namespace SocialFashion.Web.Api
                 return response;
             });
         }
+
+        [Route("testgetallproduct")]
+        public HttpResponseMessage TestGetAll(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                var listProductAll = _productService.TestGetAllProduct();
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listProductAll);
+
+
+                return response;
+            });
+        }
+
+
         [Route("create")]
         public HttpResponseMessage Post(HttpRequestMessage request, Product p)
         {

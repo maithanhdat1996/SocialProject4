@@ -1,0 +1,770 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr"
+	  class='com_community view-frontpage itemid-103 home j36 mm-hover'>
+<head>
+		
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="title" content="Socialize Template - Responsive JomSocial Template" />
+	<meta name="generator" content="Joomla! - Open Source Content Management" />
+	<title>Mai Thanh Dat</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="/Content/client//Content/client/components/com_community/assets/vendors/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/components/com_community/assets/release/css/override.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/components/com_community/templates/jomsocial/assets/css/old.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/components/com_community/templates/jomsocial/assets/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/components/com_community/assets/pickadate/themes/classic.combined.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/templates/system/css/system.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/templates/socialize/local/css/themes/demo/template.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/templates/socialize/local/css/themes/demo/megamenu.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/templates/socialize/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/plugins/system/t3/base-bs3/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/client/modules/mod_community_toolbar/assets/css/style.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+.iseo-dashed{
+						border-bottom:1px dashed;
+						text-decoration:none !important;
+				  }
+
+        #community-tb-wrap.community-toolbar{
+            background: 0;
+        }
+        #community-tb-wrap.community-toolbar .navbar-inner {
+            background: transparent;
+        }
+        #community-tb-wrap.community-toolbar .navbar .nav > li > a i{
+            color: 0;
+        }
+	</style>
+	<script src="http://cdn.embedly.com/widgets/platform.js" type="text/javascript"></script>
+	<script src="/Content/client/components/com_community/assets/release/js/loader.js" type="text/javascript"></script>
+	<script src="/Content/client/components/com_community/assets/release_32/js/bundle.js" type="text/javascript"></script>
+	<script src="/Content/client/components/com_community/assets/vendors/toolkit.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"
+            integrity="sha256-e9gNBsAcA0DBuRWbm0oZfbiCyhjLrI6bmqAl5o+ZjUA="
+            crossorigin="anonymous"></script>
+	
+	<script src="/Content/client/plugins/system/t3/base-bs3/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+	<script src="/Content/client/plugins/system/t3/base-bs3/js/script.js" type="text/javascript"></script>
+	<script src="/Content/client/plugins/system/t3/base-bs3/js/menu.js" type="text/javascript"></script>
+	<script src="/Content/client/plugins/system/t3/base-bs3/js/nav-collapse.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/Content/client/plugins/system/jomsocial.system/pc_includes/ajax_1.5.pack.js"></script>
+	
+	<style type="text/css">video { width: 100% !important; height: auto !important; }</style>
+
+	
+<!-- META FOR IOS & HANDHELD -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	
+	
+<meta name="HandheldFriendly" content="true"/>
+<meta name="apple-mobile-web-app-capable" content="YES"/>
+
+<style>
+.fa-hover a {
+height: 25px;
+line-height: 25px;
+}
+.fa-hover i {
+display:inline-block;
+width: 25px;
+text-align:left;
+margin-right:5px;
+}
+</style>
+</head>
+
+<body class="t3-has-navbar">
+
+<div class="t3-wrapper"> <!-- Need this wrapper for off-canvas menu. Remove if you don't use of-canvas -->
+
+  <div class="no-header">
+    
+<!-- TOP-HEADER -->
+@if (Request.IsAuthenticated)
+{
+<nav class="navbar navbar-default navbar-fixed-top t3-community-toolbar" id="t3-community-toolbar" role="navigation">
+	
+
+<!-- Container -->
+<div class="container">
+<!-- Toolbar for Users -->
+
+	<div class="navbar-header pull-left">
+			<a class="navbar-brand hidden-xs" href="http://www.socialize.jomsocial.com"><img height="50" src="/Content/client/images/socialize-logo.png" alt="http://www.socialize.jomsocial.com logo"/></a>
+			</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="/">
+					<span class="glyphicon glyphicon-home"></span>
+				</a>
+			</li>
+			<li>
+				<a rel="tooltip" data-placement="bottom" class="joms-module-global-notif" href="javascript:" onclick="joms.popup.notification.global();" title="Global notifications">
+					<span class="glyphicon glyphicon-globe"></span>
+					<span class="joms-notifications__label joms-js--notiflabel-general"></span>
+				</a>
+			</li>
+			<li>
+				<a rel="tooltip" data-placement="bottom" class="joms-module-friend-invite-notif" onclick="joms.popup.notification.friend(); return false;" href="/friends/pending" onclick="joms.notifications.showRequest();return false;" title="Friend invites">
+					<span class="glyphicon glyphicon-user"></span>
+					<span class="joms-notifications__label joms-js--notiflabel-frequest">1</span>
+				</a>
+			</li>
+			<li>
+				<a rel="tooltip" data-placement="bottom" class="joms-module-new-message-notif" onclick="joms.popup.notification.pm(); return false;" href="/inbox"  onclick="joms.notifications.showInbox();return false;" title="New messages">
+					<span class="glyphicon glyphicon-envelope"></span>
+					<span class="joms-notifications__label joms-js--notiflabel-inbox"></span>
+				</a>
+			</li>
+		</ul>
+		<form class="navbar-form navbar-left" role="search" name="search" id="cFormSearch" method="get" action="/search/display">
+			<div class="form-group form-group--search">
+				<input type="text" class="form-control" placeholder="Search" id="keyword" name="q">
+			</div>
+			<button type="submit" class="btn btn-default">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
+
+			<input type="hidden" name="option" value="com_community" />
+			<input type="hidden" name="view" value="search" />
+		</form>
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+{
+		<div class="navbar-right navbar-login">
+			<div class="navbar-user">
+				<a class="" href="/profile">
+					<img class="img-circle" width="30" src="/Content/client/images/avatar/7e1aefed8ac11ed92f4f2746.jpg" alt="demo" /> 
+					<span>demo</span>
+				</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="/profile/preferences" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						<span class="glyphicon glyphicon-cog"></span> <!--<span class="caret"></span>-->
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="/profile/uploadAvatar">Change avatar</a></li>
+						<li><a href="/profile/edit">Edit profile</a></li>
+						<li><a href="/profile/preferences">Change privacy</a></li>
+					</ul>
+				</li>
+
+				<li>
+                   
+                    @Html.AntiForgeryToken()
+					<a class="dropdown-toggle" href="javascript:document.getElementById('logoutForm').submit()" title="Log out" >
+						<span class="glyphicon glyphicon-off"></span>
+					</a>
+                   
+				</li>
+
+				
+			</ul>
+		</div>
+}
+	</div><!-- /.navbar-collapse -->
+
+	<!-- Mobile toolbar -->
+	<ul class="nav nav-pills visible-xs">
+		<li>
+			<a href="/">
+				<span class="glyphicon glyphicon-home"></span>
+			</a>
+		</li>
+		<li>
+			<a class="joms-module-global-notif" href="javascript:" onclick="joms.popup.notification.global();">
+				<span class="glyphicon glyphicon-globe"></span>
+				<span class="joms-notifications__label joms-js--notiflabel-general"></span>
+			</a>
+		</li>
+		<li>
+			<a class="joms-module-friend-invite-notif" onclick="joms.popup.notification.friend(); return false;" href="/friends/pending" onclick="joms.notifications.showRequest();return false;">
+				<span class="glyphicon glyphicon-user"></span>
+				<span class="joms-notifications__label joms-js--notiflabel-frequest">1</span>
+			</a>
+		</li>
+		<li>
+			<a class="joms-module-new-message-notif" onclick="joms.popup.notification.pm(); return false;" href="/inbox"  onclick="joms.notifications.showInbox();return false;">
+				<span class="glyphicon glyphicon-envelope"></span>
+				<span class="joms-notifications__label joms-js--notiflabel-inbox"></span>
+			</a>
+		</li>
+		<li>
+			<a class="search-input-toggle">
+				<span class="glyphicon glyphicon-search"></span>
+			</a>
+		</li>
+		<li class="dropdown">
+			<a href="/profile/preferences" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+				<span class="glyphicon glyphicon-cog"></span> <!--<span class="caret"></span>-->
+			</a>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="/profile/uploadAvatar">Change avatar</a></li>
+				<li><a href="/profile/edit">Edit profile</a></li>
+				<li><a href="/profile/preferences">Change privacy</a></li>
+				<li class="divider visible-xs"></li>
+				<li class="visible-xs"><a href="javascript:" onclick="document.communitylogout3.submit();">Log out</a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class="menu-search collapse" >
+		<form class="navbar-form form-inline visible-xs" role="search" name="search" id="cFormSearch" method="get" action="/search/display">
+
+			<div class="input-append" style="width:100%;">
+				<input type="text" class="input-small" placeholder="Search" id="keyword" name="q" style="display:inline-block; width:80%;">
+				<button type="submit" class="btn btn-primary" style="padding:7px; width:20%;">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</div>
+			<input type="hidden" name="option" value="com_community" />
+			<input type="hidden" name="view" value="search" />
+		</form>
+	</div>
+</div>
+
+<button type="button" class="btn btn-sm btn-primary toggle-button toggle-no-header" data-toggle="collapse" data-target=".t3-navbar-collapse">
+	<i class="fa fa-bars"></i>
+</button>
+
+<!-- Login Modal -->
+<div class="modal modal-login fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Login</h4>
+			</div>
+			<div class="modal-body">
+				<form action="/component/users/?task=user.login&amp;Itemid=" method="post" name="form-login" id="form-login">
+					<div class="form-group">
+						<span id="form-login-username">
+							<input name="username" id="username" type="text" class="form-control" placeholder="Username">
+						</span>
+					</div>
+					
+					<div class="form-group">
+						<span id="form-login-password">
+							<input name="password" id="passwd" type="password" class="form-control" placeholder="Password">
+						</span>
+					</div>
+
+					<ul class="list-unstyled">
+						<li>
+							<a href="/joomla/registeration?view=remind">
+								Forgot your username?							</a>
+						</li>
+						<li>
+							<a href="/joomla/registeration?view=reset">
+								Forgot your password?							</a>
+						</li>
+					</ul>
+
+					
+										<div class="checkbox">
+						<label id="form-login-remember" for="remember">
+							<input tabindex="3" class="checkbox" type="checkbox" name="remember" id="remember" value="yes" alt="Remember Me" />
+							Remember me						</label>
+					</div>
+					
+					<button type="submit" name="Submit" class="btn btn-block btn-lg btn-primary">
+						Login					</button>
+
+					<input type="hidden" name="option" value="com_users" />
+					<input type="hidden" name="task" value="user.login" />
+					<input type="hidden" name="return" value="aW5kZXgucGhwP29wdGlvbj1jb21fY29tbXVuaXR5JnZpZXc9cHJvZmlsZQ==" />
+					<input type="hidden" name="de221ed384f2d788407e53039bf9a67e" value="1" />				</form>
+			</div>
+					</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery('#t3-community-toolbar').tooltip({
+		selector: "a[rel=tooltip]"
+	});
+	jQuery('.search-input-toggle').click(function() {
+		  jQuery('.menu-search').toggleClass('in');
+	});
+</script>
+
+</nav>
+}
+else
+{
+    <nav class="navbar navbar-default navbar-fixed-top t3-community-toolbar" id="t3-community-toolbar" role="navigation">
+
+
+        <!-- Container -->
+        <div class="container">
+            <!-- Toolbar for Users -->
+
+            <div class="navbar-header pull-left">
+                <a class="navbar-brand" href="http://www.socialize.jomsocial.com"><img height="50" src="/images/socialize-logo.png" alt="http://www.socialize.jomsocial.com logo"></a>
+            </div>
+
+            <!-- Login hidden on mobile -->
+            @{Html.RenderAction("LoginPartial", "Account");}
+
+            <div class="navbar-form pull-right visible-xs">
+                <!-- MOBILE LOGIN BUTTON -->
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-login">
+                    <i class="fa fa-sign-in"></i>
+                    Login
+                </button>
+
+                <a class="btn btn-sm btn-accent" href="/register">
+                    Sign Up
+                </a>
+            </div>
+
+        </div>
+
+        <button type="button" class="btn btn-sm btn-primary toggle-button toggle-no-header" data-toggle="collapse" data-target=".t3-navbar-collapse">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- Login Modal -->
+        <div class="modal modal-login fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/component/users/?task=user.login&amp;Itemid=" method="post" name="form-login" id="form-login">
+                            <div class="form-group">
+                                <span id="form-login-username">
+                                    <input name="username" id="username" type="text" class="form-control" placeholder="Username">
+                                </span>
+                            </div>
+
+                            <div class="form-group">
+                                <span id="form-login-password">
+                                    <input name="password" id="passwd" type="password" class="form-control" placeholder="Password">
+                                </span>
+                            </div>
+
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="/joomla/registeration?view=remind">
+                                        Forgot your username?
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/joomla/registeration?view=reset">
+                                        Forgot your password?
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                            <div class="checkbox">
+                                <label id="form-login-remember" for="remember">
+                                    <input tabindex="3" class="checkbox" type="checkbox" name="remember" id="remember" value="yes" alt="Remember Me">
+                                    Remember me
+                                </label>
+                            </div>
+
+                            <button type="submit" name="Submit" class="btn btn-block btn-lg btn-primary">
+                                Login
+                            </button>
+
+                            <input type="hidden" name="option" value="com_users">
+                            <input type="hidden" name="task" value="user.login">
+                            <input type="hidden" name="return" value="aW5kZXgucGhwP29wdGlvbj1jb21fY29tbXVuaXR5JnZpZXc9cHJvZmlsZQ==">
+                            <input type="hidden" name="7cafc495ef62a1d250b109d91cd3a3a4" value="1">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+	jQuery('#t3-community-toolbar').tooltip({
+		selector: "a[rel=tooltip]"
+	});
+	jQuery('.search-input-toggle').click(function() {
+		  jQuery('.menu-search').toggleClass('in');
+	});
+        </script>
+
+    </nav>
+}
+<!-- //TOP-HEADER -->
+
+  </div>
+
+  
+<div id="t3-mainbody" class="container t3-mainbody">
+	<div class="row">
+
+		<!-- MAIN CONTENT -->
+		@RenderBody()
+		<!-- //MAIN CONTENT -->
+
+		<!-- SIDEBAR RIGHT -->
+		<div class="t3-sidebar t3-sidebar-right col-xs-12 col-sm-4  col-md-3 ">
+			<div class="t3-module module sbox2 " id="Mod89"><div class="module-inner"><h3 class="module-title "><span>Events</span></h3><div class="module-ct">
+
+    <div class="joms-blankslate">Sorry, we currently have no events.</div>
+
+    <small><a class="joms-button--link" href="/jomsocial/all-events/display">View All Events</a></small>
+
+
+</div></div></div><div class="t3-module module sbox2 " id="Mod116"><div class="module-inner"><h3 class="module-title "><span>Photos</span></h3><div class="module-ct">
+
+<ul class="joms-list--thumbnail">
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('33', '84');" >
+            <img title="Uploaded by admin" src="/Content/client/images/avatar/thumb_e390aef42eb30667a730f311c8bfa473.jpg" alt="admin" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('8', '83');" >
+            <img title="Uploaded by admin" src="/Content/client/images/cover/profile/69/thumb_a8a309057a0c85fcdda06cdb40b40d71.jpg" alt="admin" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('31', '80');" >
+            <img title="Uploaded by demo" src="/Content/client/images/cover/event/5/thumb_4d3312eb3dc7985cde3da9461b79be00.jpg" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('29', '77');" >
+            <img title="Uploaded by demo" src="/Content/client/images/cover/group/4/thumb_47a140a1cc10f6c43b45e1069009fb5f.png" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('28', '76');" >
+            <img title="Uploaded by demo" src="/Content/client/images/avatar/group/thumb_d0301f79bb177e0e0a6fbeafb04f8628.png" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('26', '73');" >
+            <img title="Uploaded by demo" src="/Content/client/images/avatar/group/thumb_6aa11a56cb253cd48da1d4d4f470362c.png" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '58');" >
+            <img title="Uploaded by admin" src="/Content/client/images/cover/event/1/thumb_2c770d7e9acb2c05347d0ce3a23330ab.png" alt="admin" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '57');" >
+            <img title="Uploaded by admin" src="/Content/client/images/cover/event/1/thumb_238d2a7579bf5a34192e4649e47f690b.png" alt="admin" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '55');" >
+            <img title="Uploaded by admin" src="/Content/client/images/cover/event/1/thumb_cf47b71212b180cca5fb26e3ad3339c8.jpg" alt="admin" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '54');" >
+            <img title="Uploaded by admin" src="/Content/client/images/cover/event/1/thumb_908502f1384dbe708a0205ed15094910.png" alt="admin" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '53');" >
+            <img title="Uploaded by admin" src="/Content/client/images/cover/event/1/thumb_411fe709ffa4a79e51c7a7bc3c7ea9db.png" alt="admin" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '51');" >
+            <img title="Uploaded by demo" src="/Content/client/images/cover/event/1/thumb_bf6e13c6814a6798a7c1fd10bcba96d0.png" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '50');" >
+            <img title="Uploaded by demo" src="/Content/client/images/cover/event/1/thumb_a0d63e11959ad8926760e9af8a50e3de.png" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('14', '37');" >
+            <img title="Uploaded by demo" src="/Content/client/images/photos/69/14/thumb_c089cbbb90be3def3aa1de3a.png" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('8', '22');" >
+            <img title="Uploaded by demo" src="/Content/client/images/cover/profile/69/thumb_8500a81190f4f60d3ed631b58d273beb.jpg" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('8', '21');" >
+            <img title="Uploaded by demo" src="/Content/client/images/cover/profile/69/thumb_5af2a738ee370cfc1c8f302a55cf55e0.jpg" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('6', '11');" >
+            <img title="Uploaded by Bryan" src="/Content/client/images/cover/event/1/thumb_494873a3fdc8f2b835e8653d16e04c93.png" alt="Bryan" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('19', '82');" >
+            <img title="Uploaded by demo" src="/Content/client/images/photos/69/19/thumb_0a6e4c37d52a9d4c8eab6e81.jpg" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('27', '74');" >
+            <img title="Uploaded by demo" src="/Content/client/images/groupphotos/3/25/thumb_d7be443e50d03f2bdebbc487.jpg" alt="demo" >
+        </a>
+    </li>
+        <li class="joms-list__item">
+        <a href="javascript:" onclick="joms.api.photoOpen('27', '75');" >
+            <img title="Uploaded by demo" src="/Content/client/images/groupphotos/3/25/thumb_d7be443e50d03f2bdebbc487.jpg" alt="demo" >
+        </a>
+    </li>
+    </ul>
+</div></div></div><div class="t3-module module sbox2 " id="Mod117"><div class="module-inner"><h3 class="module-title "><span>Members</span></h3><div class="module-ct">    <div class="joms-js--member-module">
+    <div class="joms-gap"></div>
+    <ul class="joms-list--thumbnail clearfix">
+
+                            <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/128-ijoomla-com/profile">
+                                <img src="//Content/client/components/com_community/assets/user-Male-thumb.png"
+                                     title="iJoomla.com"
+                                     alt="iJoomla.com"
+                                     data-author="128">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/127-ricardo/profile">
+                                <img src="//Content/client/components/com_community/assets/user-Male-thumb.png"
+                                     title="Ricardo"
+                                     alt="Ricardo"
+                                     data-author="127">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/126-michal/profile">
+                                <img src="//Content/client/components/com_community/assets/user-Male-thumb.png"
+                                     title="Michal"
+                                     alt="Michal"
+                                     data-author="126">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/123-jomsocial/profile">
+                                <img src="//Content/client/components/com_community/assets/user-Male-thumb.png"
+                                     title="JomSocial"
+                                     alt="JomSocial"
+                                     data-author="123">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/83-paul/profile">
+                                <img src="/Content/client/images/avatar/thumb_ac60bfaf953aea9f068fb06c.jpg"
+                                     title="Paul"
+                                     alt="Paul"
+                                     data-author="83">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/82-ashraf/profile">
+                                <img src="/Content/client/images/avatar/thumb_17803a13a4b430edb2aa913d.png"
+                                     title="Albertus"
+                                     alt="Albertus"
+                                     data-author="82">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/81admin/profile">
+                                <img src="/Content/client/images/avatar/thumb_27511f99c9a4c729166dee07.jpg"
+                                     title="admin"
+                                     alt="admin"
+                                     data-author="81">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/79-chris/profile">
+                                <img src="/Content/client/images/avatar/thumb_16cfe572c9dd854139a7bf33.jpg"
+                                     title="Rudy"
+                                     alt="Rudy"
+                                     data-author="79">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/78-eric/profile">
+                                <img src="/Content/client/images/avatar/thumb_8f36192af62ac0fa548a3a73.jpg"
+                                     title="Eric"
+                                     alt="Eric"
+                                     data-author="78">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/77-/profile">
+                                <img src="/Content/client/images/avatar/thumb_7223aa8d7983e4b98b988cb8.jpg"
+                                     title="Bryan"
+                                     alt="Bryan"
+                                     data-author="77">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/76-sinisa/profile">
+                                <img src="//Content/client/components/com_community/assets/user-Male-thumb.png"
+                                     title="Sinisa"
+                                     alt="Sinisa"
+                                     data-author="76">
+                            </a>
+                        </div>
+                    </li>
+                                    <li class="joms-list__item">
+                        <div class="joms-avatar ">
+                            <a href="/75-/profile">
+                                <img src="/Content/client/images/avatar/thumb_cc33a13fdc009f7d821d7872.jpg"
+                                     title="Harry"
+                                     alt="Harry"
+                                     data-author="75">
+                            </a>
+                        </div>
+                    </li>
+                    </ul>
+</div>
+
+<div class="joms-gap"></div>
+<a href="/search/browse" class="joms-button--link">
+    <small>
+        View All Members(14)    </small>
+</a>
+
+</div></div></div>
+		</div>
+		<!-- //SIDEBAR RIGHT -->
+
+	</div>
+</div> 
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+<!-- FOOTER -->
+<footer id="t3-footer" class="wrap t3-footer">
+
+			<!-- FOOT NAVIGATION -->
+		<div class="container">
+				<!-- SPOTLIGHT -->
+	<div class="t3-spotlight t3-footnav  row">
+					<div class=" col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								<div class="t3-module--simple module module-no-border " id="Mod122"><div class="module-inner--simple"><h3 class="module-title--simple "><span>About Socialize</span></h3><div class="module-ct--simple">
+
+<div class="custom module-no-border"  >
+	<p>The Socialize template by the <a href="http://www.jomsocial.com/" target="_blank">JomSocial</a> team will put your <a href="http://www.jomsocial.com/" target="_blank">Joomla social network</a> at the center of your website.<br />&nbsp;<br />The top toolbar gives your members real-time alerts and easy access to the different parts of your <a href="http://www.jomsocial.com/" target="_blank">Joomla community</a>.<br />&nbsp;<br />Try out this amazing <a href="http://socialize.jomsocial.com/" target="_blank">JomSocial Template</a> today!</p></div>
+</div></div></div>
+							</div>
+					<div class=" col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								<div class="t3-module--simple module module-no-border " id="Mod123"><div class="module-inner--simple"><h3 class="module-title--simple "><span>About JomSocial</span></h3><div class="module-ct--simple">
+
+<div class="custom module-no-border"  >
+	<p>JomSocial is an award-winning <a href="http://www.jomsocial.com/" target="_blank">social network extension for Joomla</a>!</p>
+<p>It comes packed with powerful features that will make <a href="http://www.jomsocial.com/" target="_blank">social networking with Joomla</a> a breeze!</p>
+<p>To learn more, visit <a href="http://www.jomsocial.com/" target="_blank">JomSocial.com</a>. To buy it now, <a href="http://www.jomsocial.com/pricing" target="_blank">click here</a>.</p></div>
+</div></div></div>
+							</div>
+					<div class=" col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								<div class="t3-module--simple module module-no-border " id="Mod124"><div class="module-inner--simple"><h3 class="module-title--simple "><span>Developed by JomSocial</span></h3><div class="module-ct--simple">
+
+<div class="custom module-no-border"  >
+	<p>This <a href="http://socialize.jomsocial.com" target="_blank">JomSocial template</a> was developed by the JomSocial team.</p>
+<p><a title="JomSocial Team" href="http://www.jomsocial.com/team" target="_blank"><img title="JomSocial Team" src="//Content/client/images/team5.jpg" alt="JomSocial Team" width="274" height="174" /></a></p></div>
+</div></div></div>
+							</div>
+					<div class=" col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								&nbsp;
+							</div>
+					<div class=" col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								&nbsp;
+							</div>
+					<div class=" col-lg-2 col-md-2 col-sm-4 col-xs-6">
+								&nbsp;
+							</div>
+			</div>
+<!-- SPOTLIGHT -->
+		</div>
+		<!-- //FOOT NAVIGATION -->
+	
+	<section class="t3-copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 copyright ">
+					
+
+<div class="custom"  >
+	© JomSocial.com All Rights Reserved</div>
+
+				</div>
+							</div>
+		</div>
+	</section>
+
+</footer>
+<!-- //FOOTER -->
+
+<!-- BACK TOP TOP BUTTON -->
+<a href="#" class="back-to-top hidden-xs hidden-sm">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function() {
+	var offset = 220;
+	var duration = 500;
+	jQuery(window).scroll(function() {
+		if (jQuery(this).scrollTop() > offset) {
+			jQuery('.back-to-top').fadeIn(duration);
+		} else {
+			jQuery('.back-to-top').fadeOut(duration);
+		}
+	});
+	
+	jQuery('.back-to-top').click(function(event) {
+		event.preventDefault();
+		jQuery('html, body').animate({scrollTop: 0}, duration);
+		return false;
+	})
+});
+
+</script>
+<!-- BACK TO TOP BUTTON -->
+
+
+</div>
+
+</body>
+
+</html>

@@ -35,6 +35,11 @@ namespace SocialFashion.Model.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> Birthdate { get; set; }
+        public string Aboutme { get; set; }
+        public string Website { get; set; }
+        public Nullable<bool> Gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }

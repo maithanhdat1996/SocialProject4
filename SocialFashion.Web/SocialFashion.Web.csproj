@@ -57,16 +57,16 @@
       <HintPath>..\packages\Autofac.WebApi2.4.0.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -117,6 +117,10 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -245,15 +249,113 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="Mappings\AutomapperConfiguration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\client\cdn.embedly.com\widgets\platform.js" />
+    <Content Include="Content\client\components\com_community\assets\ajax-loader.gif" />
+    <Content Include="Content\client\components\com_community\assets\frontpage-image-default.jpg" />
+    <Content Include="Content\client\components\com_community\assets\mood_19.png" />
+    <Content Include="Content\client\components\com_community\assets\mood_44.png" />
+    <Content Include="Content\client\components\com_community\assets\pickadate\themes\classic.combined.css" />
+    <Content Include="Content\client\components\com_community\assets\release\css\override.css" />
+    <Content Include="Content\client\components\com_community\assets\release\js\bundle.js" />
+    <Content Include="Content\client\components\com_community\assets\release\js\loader.js" />
+    <Content Include="Content\client\components\com_community\assets\release_32\js\bundle.js" />
+    <Content Include="Content\client\components\com_community\assets\rsvp.png" />
+    <Content Include="Content\client\components\com_community\assets\user-Male-thumb.png" />
+    <Content Include="Content\client\components\com_community\assets\vendors\magnific-popup\magnific-popup.css" />
+    <Content Include="Content\client\components\com_community\assets\vendors\toolkit.min.js" />
+    <Content Include="Content\client\components\com_community\templates\assets\window\window-x.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\css\old.css" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\css\style.css" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\bookmarks.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\emo%402x.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\emo.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\middot.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\mini-loader.gif" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\select-arrow.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\sprites-app.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\sprites-glyph.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\sprites-icons.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\images\sprites-toolbar.png" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\window\wait.gif" />
+    <Content Include="Content\client\html5shim.googlecode.com\svn\trunk\html5.js" />
+    <Content Include="Content\client\images\avatar\group\55a94f957df3936c4d12f06a.png" />
+    <Content Include="Content\client\images\avatar\group\thumb_6aa11a56cb253cd48da1d4d4f470362c.png" />
+    <Content Include="Content\client\images\avatar\group\thumb_d0301f79bb177e0e0a6fbeafb04f8628.png" />
+    <Content Include="Content\client\images\avatar\thumb_0e4f0ca12c46741f9d4517ef.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_16cfe572c9dd854139a7bf33.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_17803a13a4b430edb2aa913d.png" />
+    <Content Include="Content\client\images\avatar\thumb_27511f99c9a4c729166dee07.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_7223aa8d7983e4b98b988cb8.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_7e1aefed8ac11ed92f4f2746.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_8f36192af62ac0fa548a3a73.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_ac60bfaf953aea9f068fb06c.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_cc33a13fdc009f7d821d7872.jpg" />
+    <Content Include="Content\client\images\avatar\thumb_e390aef42eb30667a730f311c8bfa473.jpg" />
+    <Content Include="Content\client\images\cover\event\1\thumb_238d2a7579bf5a34192e4649e47f690b.png" />
+    <Content Include="Content\client\images\cover\event\1\thumb_2c770d7e9acb2c05347d0ce3a23330ab.png" />
+    <Content Include="Content\client\images\cover\event\1\thumb_411fe709ffa4a79e51c7a7bc3c7ea9db.png" />
+    <Content Include="Content\client\images\cover\event\1\thumb_494873a3fdc8f2b835e8653d16e04c93.png" />
+    <Content Include="Content\client\images\cover\event\1\thumb_908502f1384dbe708a0205ed15094910.png" />
+    <Content Include="Content\client\images\cover\event\1\thumb_a0d63e11959ad8926760e9af8a50e3de.png" />
+    <Content Include="Content\client\images\cover\event\1\thumb_bf6e13c6814a6798a7c1fd10bcba96d0.png" />
+    <Content Include="Content\client\images\cover\event\1\thumb_cf47b71212b180cca5fb26e3ad3339c8.jpg" />
+    <Content Include="Content\client\images\cover\event\5\4d3312eb3dc7985cde3da9461b79be00.jpg" />
+    <Content Include="Content\client\images\cover\event\5\thumb_4d3312eb3dc7985cde3da9461b79be00.jpg" />
+    <Content Include="Content\client\images\cover\event\6\c561cf3fe4688553c37595b6897cdaa8.jpg" />
+    <Content Include="Content\client\images\cover\event\7\25b77041c9ce4166e62a251184e440f6.jpg" />
+    <Content Include="Content\client\images\cover\group\3\8fbdab7a374ad84a1de8f02fdc0925dd.jpg" />
+    <Content Include="Content\client\images\cover\group\4\47a140a1cc10f6c43b45e1069009fb5f.png" />
+    <Content Include="Content\client\images\cover\group\4\thumb_47a140a1cc10f6c43b45e1069009fb5f.png" />
+    <Content Include="Content\client\images\cover\profile\69\thumb_5af2a738ee370cfc1c8f302a55cf55e0.jpg" />
+    <Content Include="Content\client\images\cover\profile\69\thumb_8500a81190f4f60d3ed631b58d273beb.jpg" />
+    <Content Include="Content\client\images\cover\profile\69\thumb_a8a309057a0c85fcdda06cdb40b40d71.jpg" />
+    <Content Include="Content\client\images\groupphotos\3\25\thumb_d7be443e50d03f2bdebbc487.jpg" />
+    <Content Include="Content\client\images\photos\69\14\thumb_c089cbbb90be3def3aa1de3a.png" />
+    <Content Include="Content\client\images\photos\69\15\245b1dde34c39e619a6389e2.png" />
+    <Content Include="Content\client\images\photos\69\15\5e01d5a38876689c119646f2.png" />
+    <Content Include="Content\client\images\photos\69\15\9e9cbaa5b65d1f0e81bb4090.png" />
+    <Content Include="Content\client\images\photos\69\15\a71eb6d721cce76ec87badc9.png" />
+    <Content Include="Content\client\images\photos\69\15\b60ad6f42ad9e1960097d773.png" />
+    <Content Include="Content\client\images\photos\69\16\79b44982a44efda8187aa91f.jpg" />
+    <Content Include="Content\client\images\photos\69\19\0a6e4c37d52a9d4c8eab6e81.jpg" />
+    <Content Include="Content\client\images\photos\69\19\thumb_0a6e4c37d52a9d4c8eab6e81.jpg" />
+    <Content Include="Content\client\images\photos\83\24\6aa6ce76e7c4623c604ad982.png" />
+    <Content Include="Content\client\images\photos\83\24\a49b923ec79a05ab0eb86b31.png" />
+    <Content Include="Content\client\images\photos\83\24\d114aaf8a53981799c181fb0.jpg" />
+    <Content Include="Content\client\images\socialize-logo.png" />
+    <Content Include="Content\client\images\team5.jpg" />
+    <Content Include="Content\client\joomlart.s3.amazonaws.com\images\jat3v3-documents\logo-complete\t3logo-big-color.png" />
+    <Content Include="Content\client\media\jui\js\jquery-migrate.min.js" />
+    <Content Include="Content\client\media\jui\js\jquery-noconflict.js" />
+    <Content Include="Content\client\media\jui\js\jquery.min.js" />
+    <Content Include="Content\client\media\system\css\system.css" />
+    <Content Include="Content\client\media\system\images\notice-alert.png" />
+    <Content Include="Content\client\media\system\images\notice-info.png" />
+    <Content Include="Content\client\media\system\images\notice-note.png" />
+    <Content Include="Content\client\modules\mod_community_toolbar\assets\css\style.css" />
+    <Content Include="Content\client\plugins\system\jomsocial.system\pc_includes\ajax_1.5.pack.js" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\js\jquery.tap.min.js" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\js\menu.js" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\js\nav-collapse.js" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\js\respond.min.js" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\js\script.js" />
+    <Content Include="Content\client\templates\socialize\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\client\templates\socialize\local\css\themes\demo\megamenu.css" />
+    <Content Include="Content\client\templates\socialize\local\css\themes\demo\template.css" />
+    <Content Include="Content\client\templates\system\css\system.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -263,6 +365,16 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\client\components\com_community\assets\Thumbs.db" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\font\jomsocial.eot" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\font\jomsocial.svg#jomsocial" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\font\jomsocial.ttf" />
+    <Content Include="Content\client\components\com_community\templates\jomsocial\assets\font\jomsocial.woff" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\bootstrap\fonts\glyphicons-halflings-regular.svg#glyphicons_halflingsregular" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\client\plugins\system\t3\base-bs3\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -275,7 +387,23 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\LoginPartial.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\RegisterInfo.cshtml" />
+    <Content Include="Views\Account\RegisterSuccess.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -283,30 +411,23 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Share\Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\client\components\com_community\templates\jomsocial\assets\images\glyph\" />
+    <Folder Include="Content\client\plugins\system\t3\base-bs3\fonts\font-awesome\font\" />
+    <Folder Include="Content\client\templates\socialize\fonts\font-awesome\fonts\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Fan\" />
     <Folder Include="Views\OrderDetail\" />
@@ -361,6 +482,8 @@
           <DevelopmentServerPort>56483</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:56483/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:56483/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

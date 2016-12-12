@@ -11,6 +11,11 @@ namespace SocialFashion.Web.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public string Name { get; set; }
+        public DateTime? Birthdate { get; set; }
+        public string Aboutme { get; set; }
+        public string Website { get; set; }
+        public bool Gender { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

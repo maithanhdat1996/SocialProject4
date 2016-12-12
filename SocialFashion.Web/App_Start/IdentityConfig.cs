@@ -10,7 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-
+using System.Net.Mail;
+using System.Net;
 using SocialFashion.Model.Models;
 using SocialFashion.Web.Models;
 
@@ -21,6 +22,27 @@ namespace SocialFashion.Web
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            var client = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                UseDefaultCredentials = false,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential("mtdat1996@gmail.com", "maithanhdat1996"),       // Chỉnh email và password gửi đi
+                EnableSsl = true,
+            };
+
+            var from = new MailAddress("mtdat1996@gmail.com", "Admin Social Fashion");
+            var to = new MailAddress(message.Destination);
+
+            var mail = new MailMessage(from, to)
+            {
+                Subject = message.Subject,
+                Body = message.Body,
+                IsBodyHtml = true,
+            };
+
+            client.Send(mail);
             return Task.FromResult(0);
         }
     }
@@ -55,11 +77,11 @@ namespace SocialFashion.Web
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequiredLength = 8,
+               // RequireNonLetterOrDigit = true,
                 RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                //RequireLowercase = true,
+                //RequireUppercase = true,
             };
 
             // Configure user lockout defaults

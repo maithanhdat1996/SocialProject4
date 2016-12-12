@@ -22,6 +22,10 @@ namespace SocialFashion.Service
 
         Product GetById(int id);
 
+       
+
+        IEnumerable<Product> TestGetAllProduct();
+
         void SaveChanges();
     }
     public class ProductService : IProductService
@@ -48,6 +52,13 @@ namespace SocialFashion.Service
         public IEnumerable<Product> GetAll()
         {
             return _productRepository.GetAll();
+        }
+
+        
+
+        public IEnumerable<Product> TestGetAllProduct()
+        {
+            return _productRepository.TestGetAllProduct();
         }
 
         public Product GetById(int id)

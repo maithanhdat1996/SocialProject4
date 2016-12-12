@@ -112,6 +112,12 @@
     <Compile Include="Models\Fan.cs">
       <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetAllProductByCat_Result.cs">
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllProduct_Result.cs">
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Log.cs">
       <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>

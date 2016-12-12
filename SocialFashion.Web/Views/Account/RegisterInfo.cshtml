@@ -1,0 +1,88 @@
+﻿@model SocialFashion.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Share/Layout.cshtml";
+}
+
+
+<div id="t3-content" class="t3-content col-xs-12 col-sm-8  col-md-9">
+    <div id="system-message-container">
+    </div>
+
+    <div class="t3-content-block">
+
+        <div id="community-wrap" class="jomsocial-wrapper on-socialize ltr cRegister">
+            <div class="jomsocial">
+                <div class="outerpgbar"><div class="innerpgbar" style="width:20%;"></div></div>
+                <div class="joms-page">
+
+                    <h3 class="joms-page__title">
+                        Register
+                    </h3>
+                    @using (Html.BeginForm("RegisterInfo", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="joms-form__group">
+                            <span> @Html.LabelFor(m => m.UserName) <span class="joms-required">*</span> </span>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "joms-input" })
+                            </div>
+                        </div>
+
+                        <div class="joms-form__group">
+                            <span> @Html.LabelFor(m => m.Email) <span class="joms-required">*</span> </span>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "joms-input" })
+                            </div>
+                        </div>
+
+                        <div class="joms-form__group">
+                            <span> @Html.LabelFor(m => m.Password) <span class="joms-required">*</span> </span>
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "joms-input", @id = "jspassword" })
+                            </div>
+                        </div>
+
+                        <div class="joms-form__group">
+                            <span> @Html.LabelFor(m => m.ConfirmPassword) <span class="joms-required">*</span> </span>
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "joms-input", @id = "jspassword" })
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="joms-form__group">
+                            <span></span>
+                            Fields marked with an asterisk (*) are required.
+                        </div>
+
+                        <div class="joms-form__group">
+                            <span></span>
+                            <button type="submit" name="submit" class="joms-button__next joms-button--full-small">
+                                Next                <span class="joms-loading" style="display:none">
+                                    &nbsp;
+                                    <img src="/components/com_community/assets/ajax-loader.gif" alt="loader">
+                                </span>
+                            </button>
+
+
+                        </div>
+
+
+
+
+
+
+                    }
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -67,6 +67,12 @@ namespace SocialFashion.Web.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "Name")]
+        public string UserName { get; set; }
+
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -82,6 +88,19 @@ namespace SocialFashion.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Gender")]
+        [Required]
+        public bool Gender { get; set; }
+
+        [Display(Name = "Birthdate")]
+        public DateTime Birthdate { get; set; }
+
+        [Display(Name = "About me ")]
+        public string Aboutme { get; set; }
+
+        [Display(Name = "Website")]
+        public string Website { get; set; }
     }
 
     public class ResetPasswordViewModel

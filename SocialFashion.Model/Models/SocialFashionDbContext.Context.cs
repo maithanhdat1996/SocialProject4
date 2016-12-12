@@ -12,6 +12,8 @@ namespace SocialFashion.Model.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SocialFashionDbContext : DbContext
     {
@@ -22,10 +24,7 @@ namespace SocialFashion.Model.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetUser>().ToTable("AspNetUsers");
-            modelBuilder.Entity<AspNetRole>().ToTable("AspNetRoles");
-            modelBuilder.Entity<AspNetUserClaim>().ToTable("AspNetUserClaims");
-            modelBuilder.Entity<AspNetUserLogin>().ToTable("AspNetUserLogins");
+            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
@@ -47,5 +46,19 @@ namespace SocialFashion.Model.Models
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<StatusComment> StatusComments { get; set; }
         public virtual DbSet<StatusLike> StatusLikes { get; set; }
+    
+        public virtual ObjectResult<GetAllProductByCat_Result> GetAllProductByCat(Nullable<int> catid)
+        {
+            var catidParameter = catid.HasValue ?
+                new ObjectParameter("Catid", catid) :
+                new ObjectParameter("Catid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProductByCat_Result>("GetAllProductByCat", catidParameter);
+        }
+    
+        public virtual ObjectResult<GetAllProduct_Result> GetAllProduct()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProduct_Result>("GetAllProduct");
+        }
     }
 }

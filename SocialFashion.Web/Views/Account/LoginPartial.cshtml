@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNet.Identity
+@using SocialFashion.Web.Models
+@model LoginViewModel
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "navbar-form navbar-right hidden-xs", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationMessage("CustomError", new { @class = "text-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group form-group">
+        <span id="form-login-username">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </span>
+
+
+        <span id="form-login-password">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </span>
+        <a rel="tooltip" data-placement="bottom" title="Forgot your password?" href="/Account/ForgotPassword">
+            <span class="glyphicon glyphicon-question-sign"></span>
+        </a>
+
+    </div>
+
+    <label id="form-login-remember">
+        <span for="remember">
+            Remember me
+            @Html.CheckBoxFor(m => m.RememberMe)
+        </span>
+    </label>
+
+
+                <button type="submit" name="Submit" class="btn btn-sm btn-primary">
+                    Login
+                </button>
+
+
+                <a class="btn btn-sm btn-accent" href="/Account/RegisterInfo">
+                    Sign Up
+                </a>
+
+
+
+}

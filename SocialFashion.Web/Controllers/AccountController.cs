@@ -55,43 +55,70 @@ namespace SocialFashion.Web.Controllers
             }
         }
 
-        //
-        // GET: /Account/Login
-        [AllowAnonymous]
+
+       // GET: /Account/Login
+       [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
-        //
-        // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+
+        //POST: /Account/Login
+       [HttpPost]
+       [AllowAnonymous]
+       [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+            SocialFashionDbContext db = new SocialFashionDbContext();
+            AspNetUser user = db.AspNetUsers.SingleOrDefault(m => m.Email == model.Email);
+            //ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
 
-            // This doesn't count login failures towards account lockout
+            if (user == null)
+            {
+                ModelState.AddModelError("CustomError", "Email không tồn tại");
+                return View(model);
+            }
+            else
+            {
+                if (user.EmailConfirmed == false)
+                {
+                    ModelState.AddModelError("CustomError", "Tài khoản chưa được xác thực.");
+                    return View(model);
+                }
+            }
+            //This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                //IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
+                //authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                //ClaimsIdentity identity = _userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                //AuthenticationProperties props = new AuthenticationProperties();
+                //props.IsPersistent = model.RememberMe;
+                //authenticationManager.SignIn(props, identity);
+                //if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                //{
+                //    return RedirectToLocal(returnUrl);
+                //}
+                //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Sai tài khoản hoặc mật khẩu");
                     return View(model);
             }
+           
         }
 
         //
@@ -138,13 +165,54 @@ namespace SocialFashion.Web.Controllers
         }
 
         //
-        // GET: /Account/Register
+        // GET: /Account/RegisterInfo
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult RegisterSuccess()
         {
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult RegisterInfo()
+        {
+            return View();
+        }
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterInfo(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                RegisterViewModel register = new RegisterViewModel
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Password = model.Password,
+                    ConfirmPassword = model.ConfirmPassword
+                };
+                TempData["Register"] = register;
+                return RedirectToAction("Register");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            RegisterViewModel register = TempData["Register"] as RegisterViewModel;
+            return View(register);
+        }
+
+        [AllowAnonymous]
+        public ActionResult LoginPartial()
+        {
+
+            return PartialView();
+        }
         //
         // POST: /Account/Register
         [HttpPost]
@@ -154,7 +222,7 @@ namespace SocialFashion.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.UserName, Birthdate = model.Birthdate, Aboutme = model.Aboutme, Website = model.Website, Gender = model.Gender };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -162,11 +230,11 @@ namespace SocialFashion.Web.Controllers
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Xác thực tài khoản", "Vui lòng click vào <a href=\"" + callbackUrl + "\">đây</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RegisterSuccess");
                 }
                 AddErrors(result);
             }
@@ -214,10 +282,10 @@ namespace SocialFashion.Web.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Lấy lại mật khảu", "Click vào  <a href=\"" + callbackUrl + "\">đây</a> để thực hiện lấy lại mật khẩu.");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -395,7 +463,7 @@ namespace SocialFashion.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
 
         //

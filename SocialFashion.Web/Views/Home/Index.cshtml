@@ -636,20 +636,17 @@
                     </ul>
                 </div>
 
-
-
-
-
-
                 <script type="text/javascript">joms.filters && joms.filters.bind();</script>
                 
                 <div>
-                    <form action="@Url.Action("Add","Status")" method="post" enctype="multipart/form-data">
-                        <textarea class="form-control" cols="5" name="txtContent" id="txtContent"></textarea>
-                        <div class="row" id="showimage">
-                        </div>
+                @using (Html.BeginForm("Add", "Status", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                        <textarea class="form-control" style="height:120px" name="txtContent" id="txtContent"></textarea>
+                        <div id="showimage"></div>
                         <div class="col-lg-2">
-                            <input type="file" class="form-control" multiple="multiple" name="FileUpload" id="FileUpload"/>
+                            <label class="btn btn-default btn-file" id="form-insert-image">
+                                Browse <input type="file" multiple name="FileUpload" id="FileUpload" style="display: none;">
+                            </label>
                         </div>
                         <div class="col-lg-2 right col-lg-offset-6">
                             <select name="sltStatus" id="sltStatus" class="form-control">
@@ -661,29 +658,28 @@
                         <div class="col-lg-2 col-lg-offset-0">
                             <button type="submit" class="form-control">Post</button>
                         </div>
-                    </form>
+                }
                 </div>
                 <script>
-                    function readURL(input) {
-                        alert('in');
-                        if (input.files && input.files[0]) {
-                            var reader = new FileReader();
+                    var inputLocalFont = document.getElementById("FileUpload");
+                    inputLocalFont.addEventListener("change", previewImages, false);
 
-                            reader.onload = function (e) {
-                                var elem = document.createElement("img");
-                                elem.setAttribute("src", e.target.result);
-                                elem.setAttribute("width", "90px");
-                                document.getElementById("showimage").appendChild(elem);
-                            }
-                            reader.readAsDataURL(input.files[0]);
+                    function previewImages() {
+                        var fileList = this.files;
+
+                        var anyWindow = window.URL || window.webkitURL;
+
+                        for (var i = 0; i < fileList.length; i++) {
+                            var objectUrl = anyWindow.createObjectURL(fileList[i]);
+                            $('#showimage').append('<img src="' + objectUrl + '" height="100px" />');
+                            window.URL.revokeObjectURL(fileList[i]);
                         }
+
+                        $(inputLocalFont).hide();
+                        inputLocalFont = $('<input type="file" multiple name="FileUpload" id="FileUpload" style="display: none;">').appendTo("#form-insert-image").get(0);
+                        inputLocalFont.addEventListener("change", previewImages, false);
                     }
-
-                    $("#FileUpload").change(function () {
-                        readURL(this);
-                    });
                 </script>
-
                 <div class="joms-body">
 
 
@@ -944,18 +940,10 @@
                             </nav>
                         </div>
                         <!-- User logged than display filterbar -->
-                        <div class="joms-activity-filter clearfix">
-                            <div class="joms-activity-filter-action">
-
-                                <a>
-                                    <svg viewBox="0 0 16 16" class="joms-icon">
-                                        <use xlink:href="http://socialize.jomsocial.com/#joms-icon-arrow-down"></use>
-                                    </svg>
-                                    <span class="joms-gap--inline-small"></span>
-                                    Filtered by
-                                </a>
-                                <span class="joms-activity-filter-status" data-default="All streams">All streams</span>
-                            </div>
+                        <div class="joms-activity-filter clearfix" style="
+    background-color: #ecf0f1;
+    border: none;
+">
                             <form class="reset-gap">
                                 <ul class="unstyled joms-activity-filter-dropdown joms-postbox-dropdown" style="display: none">
                                     <li data-filter="all"
@@ -1210,19 +1198,27 @@
                                             </div>
                                             <div class="joms-stream__body">
 
-                                                <div data-type="stream-editor" class="cStream-Respond" style="display:none">
-                                                    <textarea class="joms-textarea" style="margin-bottom:0">@i.Content</textarea>
-                                                    <div style="text-align:right;">
-                                                        <button class="joms-button--neutral joms-button--small" onclick="joms.view.stream.cancel('160');">Cancel</button>&nbsp;
-                                                        <button class="joms-button--primary joms-button--small" onclick="joms.view.stream.save('160', this);">Save</button>
-                                                    </div>
+
+                                                <p><span class="joms-js--stream-text-201">@i.Content</span></p>
+
+
+                                                <div class="joms-media--images">
+                                                    @{
+                                                        String strImage = i.MoreImages;
+                                                        String[] img = strImage.Split('|');
+                                                        foreach (string s in img)
+                                                        {
+                                                            if (!s.IsEmpty())
+                                                            {
+                                                                <a href="javascript:" onclick="joms.api.photoOpen('15', '107');">
+                                                                    <img src="~/Content/client/images/status/@s" alt="Load image ..." width="480px">
+                                                                </a>
+                                                            }
+                                                        }
+                                                    }
+                                                    
                                                 </div>
 
-                                                <p data-type="stream-content">
-                                                    <span class="joms-js--stream-text-160">@i.Content</span>
-                                                </p>
-
-                                                <!-- Fetched data -->
 
                                             </div>
 
@@ -1270,12 +1266,6 @@
                                                     <div class="joms-textarea joms-textarea__beautifier"></div>
                                                     <textarea class="joms-textarea" name="comment" data-id="160"
                                                               placeholder="Add a comment"></textarea>
-                                                    <div class="joms-textarea__loading"><img src="//Content/client/components/com_community/assets/ajax-loader.gif" alt="loader"></div>
-                                                    <div class="joms-textarea joms-textarea__attachment">
-                                                        <button onclick="joms.view.comment.removeAttachment(this);">×</button>
-                                                        <div class="joms-textarea__attachment--loading"><img src="//Content/client/components/com_community/assets/ajax-loader.gif" alt="loader"></div>
-                                                        <div class="joms-textarea__attachment--thumbnail"><img src="#" alt="attachment"></div>
-                                                    </div>
                                                 </div>
                                                 <svg viewBox="0 0 16 16" class="joms-icon joms-icon--add" onclick="joms.view.comment.addAttachment(this);">
                                                     <use xlink:href="http://socialize.jomsocial.com/#joms-icon-camera"></use>

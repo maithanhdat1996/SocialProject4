@@ -30,18 +30,25 @@ namespace SocialFashion.Web.Controllers
         [HttpPost]
         public ActionResult Add(IEnumerable<HttpPostedFileBase> FileUpload, String txtContent, int sltStatus)
         {
+            var userId = User.Identity.GetUserId();
             if (Request.IsAuthenticated)
             {
+                String strImage = "";
                 foreach (var file in FileUpload)
                 {
-                    file.SaveAs(Server.MapPath("~/Content/client/images/status/" + file.FileName));
+                    if (file != null)
+                    {
+                        String strFileName = userId.Substring(0, 8) + DateTime.Now.ToString("yyyymmddMMss") + file.FileName;
+                        strFileName.Replace('|', '@');
+                        file.SaveAs(Server.MapPath("~/Content/client/images/status/" + strFileName));
+                        strImage += strFileName + "|";
+                    }
                 }
-                var userId = User.Identity.GetUserId();
-                AspNetUser user = db.AspNetUsers.SingleOrDefault(m => m.Id == userId);
                 Status s = new Status();
-                s.StatusId = sltStatus;
+                s.Privacy = (byte)sltStatus;
                 s.Content = txtContent;
                 s.UserId = userId;
+                s.MoreImages = strImage;
                 s.ProductId = 0;
                 s.Date = DateTime.Now;
                 db.Status.Add(s);

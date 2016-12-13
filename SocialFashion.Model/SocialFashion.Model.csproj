@@ -118,6 +118,9 @@
     <Compile Include="Models\GetAllProduct_Result.cs">
       <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetAllStutusByUserId_Result.cs">
+      <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Log.cs">
       <DependentUpon>SocialFashionDbContext.tt</DependentUpon>
     </Compile>

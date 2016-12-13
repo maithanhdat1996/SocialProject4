@@ -15,7 +15,7 @@ namespace SocialFashion.Model.Models
     public partial class Status
     {
         public int StatusId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int ProductId { get; set; }
         public System.DateTime Date { get; set; }
         public byte Privacy { get; set; }

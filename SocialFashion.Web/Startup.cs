@@ -12,6 +12,12 @@ using SocialFashion.Data.Repositories;
 using SocialFashion.Service;
 using System.Web.Mvc;
 using System.Web.Http;
+using System.Web;
+using Microsoft.Owin.Security.DataProtection;
+using SocialFashion.Web.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 [assembly: OwinStartup(typeof(SocialFashion.Web.Startup))]
 
@@ -36,6 +42,14 @@ namespace SocialFashion.Web
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 
             builder.RegisterType<SocialFashionDbContext>().AsSelf().InstancePerRequest();
+
+            //Asp.net Identity
+
+            //builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            //builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            //builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            //builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            //builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof(ProductRepository).Assembly)

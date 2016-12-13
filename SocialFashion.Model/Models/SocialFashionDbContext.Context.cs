@@ -60,5 +60,14 @@ namespace SocialFashion.Model.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProduct_Result>("GetAllProduct");
         }
+    
+        public virtual ObjectResult<GetAllStutusByUserId_Result> GetAllStutusByUserId(string userId)
+        {
+            var userIdParameter = userId != null ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllStutusByUserId_Result>("GetAllStutusByUserId", userIdParameter);
+        }
     }
 }

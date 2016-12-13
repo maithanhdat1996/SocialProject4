@@ -427,6 +427,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\client\components\com_community\templates\jomsocial\assets\images\glyph\" />
+    <Folder Include="Content\client\images\status\" />
     <Folder Include="Content\client\plugins\system\t3\base-bs3\fonts\font-awesome\font\" />
     <Folder Include="Content\client\templates\socialize\fonts\font-awesome\fonts\" />
     <Folder Include="Views\Default\" />

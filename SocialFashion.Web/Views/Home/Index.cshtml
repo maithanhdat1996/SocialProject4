@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SocialFashion.Model.Models.Status>
+﻿@model IEnumerable<SocialFashion.Model.Models.GetAllStutusByUserId_Result>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Share/Layout.cshtml";
@@ -642,11 +642,16 @@
 
 
                 <script type="text/javascript">joms.filters && joms.filters.bind();</script>
-
+                
                 <div>
-                    <form action="@Url.Action("Add","Status")">
+                    <form action="@Url.Action("Add","Status")" method="post" enctype="multipart/form-data">
                         <textarea class="form-control" cols="5" name="txtContent" id="txtContent"></textarea>
-                        <div class="col-lg-2 right col-lg-offset-8">
+                        <div class="row" id="showimage">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="file" class="form-control" multiple="multiple" name="FileUpload" id="FileUpload"/>
+                        </div>
+                        <div class="col-lg-2 right col-lg-offset-6">
                             <select name="sltStatus" id="sltStatus" class="form-control">
                                 <option value="0">Public</option>
                                 <option value="1">Private</option>
@@ -658,6 +663,26 @@
                         </div>
                     </form>
                 </div>
+                <script>
+                    function readURL(input) {
+                        alert('in');
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+
+                            reader.onload = function (e) {
+                                var elem = document.createElement("img");
+                                elem.setAttribute("src", e.target.result);
+                                elem.setAttribute("width", "90px");
+                                document.getElementById("showimage").appendChild(elem);
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+                    $("#FileUpload").change(function () {
+                        readURL(this);
+                    });
+                </script>
 
                 <div class="joms-body">
 
@@ -1095,12 +1120,37 @@
                                                 </div>
                                                 <div class="joms-stream__meta">
 
-                                                    <a href="/demo/profile" data-joms-username class="joms-stream__user active">demo</a>
+                                                    <a href="/demo/profile" data-joms-username class="joms-stream__user active">@i.UserName</a>
 
                                                     <a href="/demo/profile?actid=160">
                                                         <span class="joms-stream__time">
-                                                            <small>3 years ago </small>
-
+                                                                @{
+                                                                    int Day = DateTime.Now.Day - i.Date.Day;
+                                                                    int Hour = DateTime.Now.Hour - i.Date.Hour;
+                                                                    int Munite = DateTime.Now.Minute - i.Date.Minute;
+                                                                    int Second = DateTime.Now.Second - i.Date.Second;
+                                                                    int Count = 0;
+                                                                    if (Day != 0)
+                                                                    {
+                                                                        Count++;
+                                                                        <small>@Day day </small>
+                                                                    }
+                                                                    if (Hour != 0)
+                                                                    {
+                                                                        Count++;
+                                                                        <small>@Hour hour </small>
+                                                                    }
+                                                                    if (Munite != 0 && Count < 2)
+                                                                    {
+                                                                        Count++;
+                                                                        <small>@Munite munite </small>
+                                                                    }
+                                                                    if(Second != 0 && Count < 2) 
+                                                                    {
+                                                                        <small>@Second second </small>
+                                                                    }
+                                                                    <small>ago</small>
+                                                                   }
                                                             <svg viewBox="0 0 16 16" class="joms-icon joms-show-earth">
                                                                 <use xlink:href="http://socialize.jomsocial.com/#joms-icon-earth"></use>
                                                             </svg>
@@ -1169,7 +1219,7 @@
                                                 </div>
 
                                                 <p data-type="stream-content">
-                                                    <span class="joms-js--stream-text-160">@i.Content<i class="joms-emoticon joms-emo-excited"></i> <b>feeling excited</b></span>
+                                                    <span class="joms-js--stream-text-160">@i.Content</span>
                                                 </p>
 
                                                 <!-- Fetched data -->

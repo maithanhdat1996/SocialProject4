@@ -213,7 +213,8 @@
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="Privacy" Type="tinyint" Nullable="false" />
-          <Property Name="MoreImages" Type="xml" Nullable="false" />
+          <Property Name="MoreImages" Type="xml" />
+          <Property Name="Content" Type="nchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="StatusComments">
           <Key>
@@ -290,7 +291,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="GetAllProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllProductByCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Catid" Type="int" Mode="In" />
         </Function>
@@ -542,7 +542,8 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Privacy" Type="Byte" Nullable="false" />
-          <Property Name="MoreImages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MoreImages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="StatusComment">
           <Key>
@@ -889,6 +890,7 @@
           <EntitySetMapping Name="Status">
             <EntityTypeMapping TypeName="SocialFashionModel.Status">
               <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -930,32 +932,6 @@
           <FunctionImportMapping FunctionImportName="GetAllProductByCat" FunctionName="SocialFashionModel.Store.GetAllProductByCat">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SocialFashionModel.GetAllProductByCat_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Alias" ColumnName="Alias" />
-                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="MoreImages" ColumnName="MoreImages" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="PromotionPrice" ColumnName="PromotionPrice" />
-                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="MetaKeyword" ColumnName="MetaKeyword" />
-                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllProduct" FunctionName="SocialFashionModel.Store.GetAllProduct">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SocialFashionModel.GetAllProduct_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

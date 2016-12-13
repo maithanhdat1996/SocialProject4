@@ -20,5 +20,6 @@ namespace SocialFashion.Model.Models
         public System.DateTime Date { get; set; }
         public byte Privacy { get; set; }
         public string MoreImages { get; set; }
+        public string Content { get; set; }
     }
 }

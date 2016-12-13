@@ -250,3 +250,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/SocialFashion.Web/*.config
+/SocialFashion.Model/*.Config
+/SocialFashion.Model/*.Config
+/SocialFashion.Web/*.config
